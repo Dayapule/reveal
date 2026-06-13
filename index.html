@@ -1,0 +1,764 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pavan & Shamili's Baby Gender Reveal</title>
+    
+    <!-- Premium Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Alex+Brush&family=Montserrat:wght=300;400;600;700&family=Playfair+Display:ital,wght=0,400;0,600;0,700;1,400;1,600&display=swap" rel="stylesheet">
+    
+    <style>
+        :root {
+            --boho-cream: #f7f3ec;
+            --boho-tan: #e1d4c3;
+            --boho-arch: #d9cbb6;
+            --text-brown: #5d4f43;
+            --boy-blue: #b3c7c6;
+            --girl-pink: #dfb6b6;
+        }
+
+        body {
+            font-family: 'Montserrat', sans-serif;
+            background-color: #f6f1e8;
+            color: var(--text-brown);
+            margin: 0;
+            padding: 0;
+            text-align: center;
+            overflow-x: hidden;
+        }
+
+        /* ==========================================================================
+           1. CINEMATIC ENVELOPE INTRO
+           ========================================================================= */
+        .intro-stage {
+            position: relative;
+            width: 100%;
+            height: 100vh;
+            background-color: #f4eee3;
+            overflow: hidden;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .intro-branch {
+            position: absolute;
+            top: 0; right: 0;
+            width: 150px; height: 150px;
+            background: radial-gradient(circle at top right, rgba(217, 203, 182, 0.4), transparent 70%);
+            z-index: 5;
+        }
+
+        .intro-honeycomb {
+            position: absolute;
+            top: 0; left: 0;
+            width: 150px; height: 150px;
+            background: radial-gradient(circle at top left, rgba(217, 203, 182, 0.4), transparent 70%);
+            z-index: 5;
+        }
+
+        .envelope-wrapper {
+            position: absolute;
+            bottom: -650px;
+            width: 90%;
+            max-width: 440px;
+            height: 580px;
+            display: flex;
+            justify-content: center;
+            align-items: flex-end;
+            animation: slideUpEnvelope 1.2s cubic-bezier(0.25, 1, 0.5, 1) 0.5s forwards;
+            z-index: 10;
+        }
+        @keyframes slideUpEnvelope {
+            100% { bottom: 40px; }
+        }
+
+        .envelope-pocket {
+            position: absolute;
+            width: 100%;
+            height: 360px;
+            background: #e6dac6;
+            border-radius: 6px;
+            box-shadow: 0 15px 35px rgba(93,79,67,0.12);
+            z-index: 2;
+        }
+        .envelope-pocket::before {
+            content: "";
+            position: absolute;
+            top: -70px; left: 0;
+            width: 0; height: 0;
+            border-left: 220px solid transparent;
+            border-right: 220px solid transparent;
+            border-bottom: 70px solid #e6dac6;
+            z-index: 1;
+        }
+
+        .invitation-card {
+            position: relative;
+            width: 92%;
+            background: var(--boho-cream);
+            padding: 35px 20px 0 20px;
+            box-sizing: border-box;
+            border-radius: 30px 30px 0 0;
+            box-shadow: 0 -5px 20px rgba(0,0,0,0.03);
+            z-index: 3;
+            bottom: 0;
+            height: 520px;
+            display: flex;
+            flex-direction: column;
+            justify-content: flex-start;
+            overflow: hidden;
+            opacity: 0;
+            transform: translateY(150px) scale(0.95);
+            animation: pullOutCard 1.5s cubic-bezier(0.34, 1.15, 0.64, 1) 1.5s forwards;
+        }
+        @keyframes pullOutCard {
+            100% { 
+                bottom: 40px; 
+                opacity: 1;
+                transform: translateY(0) scale(1);
+            }
+        }
+
+        .arch-container {
+            background-color: var(--boho-arch);
+            border-top-left-radius: 250px;
+            border-top-right-radius: 250px;
+            width: 100%;
+            padding: 40px 15px 140px 15px;
+            box-sizing: border-box;
+            position: relative;
+            border: 1px solid rgba(255,255,255,0.3);
+            margin-top: auto;
+            z-index: 4;
+        }
+
+        .bear-container {
+            position: absolute;
+            bottom: -5px; left: 50%;
+            transform: translateX(-50%);
+            width: 160px; height: 150px;
+            z-index: 10;
+        }
+        .bear-head {
+            width: 120px; height: 100px;
+            background: #b59473;
+            border-radius: 50% 50% 45% 45%;
+            position: absolute; bottom: 20px; left: 20px;
+        }
+        .bear-ear { width: 40px; height: 40px; background: #b59473; border-radius: 50%; position: absolute; }
+        .bear-ear.left { top: -10px; left: 10px; }
+        .bear-ear.right { top: -10px; right: 10px; }
+        .bear-ear-inner { width: 24px; height: 24px; background: #d4b290; border-radius: 50%; margin: 8px auto 0 auto; }
+        .bear-snout { width: 46px; height: 34px; background: #f5dfca; border-radius: 50%; position: absolute; bottom: 15px; left: 37px; }
+        .bear-nose { width: 16px; height: 10px; background: #3a2e2b; border-radius: 50%; margin: 5px auto 0 auto; }
+        .bear-eye { width: 10px; height: 10px; background: #3a2e2b; border-radius: 50%; position: absolute; top: 40px; }
+        .bear-eye.left { left: 32px; }
+        .bear-eye.right { right: 32px; }
+        
+        .bear-paw {
+            width: 44px; height: 44px;
+            background: #a48362;
+            border-radius: 50%;
+            position: absolute;
+            bottom: 60px;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.12);
+            will-change: transform;
+            z-index: 12;
+        }
+        .bear-paw.left { left: 34px; }
+        .bear-paw.right { right: 34px; }
+
+        .garden-border {
+            position: absolute;
+            bottom: 0; left: 0; width: 100%;
+            height: 40px;
+            background: linear-gradient(transparent, rgba(217, 203, 182, 0.2));
+            z-index: 15;
+            pointer-events: none;
+        }
+
+        .main-content-stream {
+            opacity: 0;
+            animation: fadeInStream 1s ease-out 2s forwards;
+        }
+        @keyframes fadeInStream {
+            100% { opacity: 1; }
+        }
+
+        /* ==========================================================================
+           2. MULTI-CARD PACK ARCHITECTURE
+           ========================================================================== */
+        .main-container { max-width: 460px; margin: 0 auto; padding: 40px 20px 60px 20px; box-sizing: border-box; }
+        
+        .premium-card {
+            background-color: #faf7f2;
+            background-image: radial-gradient(rgba(93, 79, 67, 0.02) 1px, transparent 0);
+            background-size: 8px 8px;
+            border-radius: 28px;
+            padding: 35px 25px;
+            margin-bottom: 35px;
+            box-shadow: 0 12px 35px rgba(93,79,67,0.06);
+            border: 1px solid #f0e9dd;
+            box-sizing: border-box;
+            position: relative;
+        }
+
+        /* Typography */
+        .curved-text { font-family: 'Montserrat', sans-serif; text-transform: uppercase; letter-spacing: 3px; font-size: 0.7rem; margin-bottom: 10px; font-weight: 600; color: #5d4f43; opacity: 0.9; }
+        .tagline { font-family: 'Montserrat', sans-serif; text-transform: uppercase; font-size: 0.65rem; letter-spacing: 2px; line-height: 1.2rem; }
+        .script-title { font-family: 'Alex Brush', cursive; font-size: 3.5rem; line-height: 3.2rem; margin: 8px 0; }
+        
+        .bold-italic-cub {
+            font-family: 'Alex Brush', cursive;
+            font-size: 3.4rem;
+            line-height: 3.4rem;
+            margin: 15px 0 25px 0;
+            color: #7a6a5e;
+            font-weight: bold;
+            text-shadow: 0.5px 0px 0px #7a6a5e, -0.5px 0px 0px #7a6a5e, 0px 0.5px 0px #7a6a5e, 0px -0.5px 0px #7a6a5e;
+        }
+        
+        .hosted-by { font-family: 'Montserrat', sans-serif; text-transform: uppercase; font-size: 0.65rem; letter-spacing: 3px; margin: 15px 0 5px 0; opacity: 0.7; }
+        .names { font-family: 'Playfair Display', serif; font-size: 1.9rem; font-weight: 600; margin: 0; }
+
+        /* Countdown Elements */
+        .countdown-container {
+            margin: 30px auto 10px auto;
+            max-width: 440px;
+            display: flex;
+            justify-content: center;
+            gap: 12px;
+        }
+        .countdown-box {
+            background: white; padding: 12px 6px; border-radius: 16px; width: 68px;
+            box-shadow: 0 10px 25px rgba(93,79,67,0.06); border: 1px solid #f2ede4;
+        }
+        .countdown-num { font-family: 'Playfair Display', serif; font-size: 1.3rem; font-weight: bold; }
+        .countdown-label { font-size: 0.55rem; text-transform: uppercase; opacity: 0.6; }
+
+        /* Carousel Size Layout */
+        .photo-gallery { display: flex; gap: 18px; overflow-x: auto; padding-bottom: 20px; scroll-snap-type: x mandatory; margin: 20px 0; }
+        .photo-frame {
+            min-width: 94%; background: white; border: 12px solid white; border-bottom: 48px solid white;
+            box-shadow: 0 8px 20px rgba(0,0,0,0.06); transform: rotate(-0.5deg); scroll-snap-align: center; border-radius: 4px;
+            box-sizing: border-box;
+        }
+        .photo-frame img { width: 100%; height: 320px; object-fit: cover; display: block;}
+        .photo-gallery::-webkit-scrollbar { display: none; }
+        .photo-gallery { -ms-overflow-style: none; scrollbar-width: none; }
+        .photo-caption { font-family: 'Alex Brush', cursive; font-size: 1.8rem; margin-top: 8px; color: var(--text-brown); }
+
+        /* Timelines */
+        .timeline { text-align: left; padding-left: 5px; margin-top: 20px; font-family: 'Playfair Display', serif; }
+        .timeline-item { position: relative; padding-left: 32px; padding-bottom: 25px; border-left: 1.5px dashed var(--boho-tan); font-size: 1.05rem; color: #4a3e34; }
+        .timeline-item strong { font-weight: 700; color: var(--text-brown); font-style: italic; font-size: 1.1rem; }
+        .timeline-item::before { content: "✨"; position: absolute; left: -9px; top: -2px; background: #faf7f2; padding: 0 2px; font-size: 0.8rem; }
+        .timeline-item:last-child { border-left: none; }
+
+        /* Dress Code Details Box */
+        .dress-code-box {
+            background: linear-gradient(145deg, #fbf9f4, #f1e7d5);
+            padding: 35px 24px;
+            border-radius: 24px;
+            margin: 15px 0 25px 0;
+            border: 1px solid #dfd3bd;
+            box-shadow: inset 0 2px 4px rgba(255,255,255,0.9), 0 8px 20px rgba(93,79,67,0.04);
+        }
+        .dress-code-title {
+            font-family: 'Alex Brush', cursive;
+            font-size: 3.5rem;
+            font-weight: normal;
+            color: #5d4f43;
+            margin: 0 0 5px 0;
+        }
+        .dress-code-sub {
+            font-family: 'Montserrat', sans-serif;
+            text-transform: uppercase;
+            font-size: 0.75rem;
+            letter-spacing: 4px;
+            color: #8c7662;
+            font-weight: 700;
+            margin-bottom: 15px;
+            display: block;
+        }
+        .dress-code-text {
+            font-family: 'Playfair Display', serif;
+            font-style: italic;
+            font-size: 1.35rem;
+            line-height: 2.1rem;
+            color: #5d4f43;
+            margin: 0;
+        }
+        .dress-code-text strong {
+            font-weight: 700;
+            font-style: normal;
+            color: #2b221b;
+            border-bottom: 2px solid var(--boho-arch);
+            padding-bottom: 1px;
+        }
+
+        /* Buttons */
+        .btn {
+            display: inline-block; background: var(--text-brown); color: #fcfbfa;
+            padding: 14px 32px; border-radius: 30px; text-decoration: none;
+            font-weight: 600; font-size: 0.85rem; text-transform: uppercase; border: none; cursor: pointer;
+            transition: transform 0.2s ease;
+        }
+        .btn:active { transform: scale(0.96); }
+        .btn:disabled { background: #ccc; cursor: not-allowed; transform: none; }
+        .btn-secondary { background: transparent; color: var(--text-brown); border: 1px solid var(--boho-tan); margin-top: 10px; font-size: 0.75rem; padding: 10px 20px; }
+
+        /* Interactive voting components */
+        .vote-box { display: flex; justify-content: space-between; margin-top: 20px; }
+        .vote-btn {
+            border: none; padding: 20px 10px; border-radius: 20px; width: 47%;
+            font-size: 0.95rem; font-weight: 600; cursor: pointer; font-family: 'Montserrat', sans-serif;
+            transition: transform 0.2s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+        }
+        .vote-btn:active { transform: scale(0.93); }
+        .btn-boy { background-color: var(--boy-blue); color: #3b4d4c; box-shadow: 0 4px 10px rgba(179,199,198,0.4); }
+        .btn-girl { background-color: var(--girl-pink); color: #5a3e3e; box-shadow: 0 4px 10px rgba(223,182,182,0.4); }
+        .vote-icon { font-size: 2rem; display: block; margin-bottom: 5px; }
+
+        .vote-metric-container { margin-top: 30px; background: rgba(255,255,255,0.6); padding: 20px 15px; border-radius: 18px; border: 1px solid #ebdcc5; }
+        .metric-title { font-size: 0.75rem; text-transform: uppercase; font-weight: 600; letter-spacing: 1px; margin-bottom: 12px; opacity: 0.8; }
+        .progress-bar-wrapper { height: 24px; width: 100%; background: #e0dbd3; border-radius: 12px; display: flex; overflow: hidden; box-shadow: inset 0 2px 5px rgba(0,0,0,0.05); }
+        .bar-boy { background: var(--boy-blue); width: 50%; height: 100%; transition: width 0.8s ease-out; display: flex; align-items: center; justify-content: center; color: #3b4d4c; font-size: 0.75rem; font-weight: bold; }
+        .bar-girl { background: var(--girl-pink); width: 50%; height: 100%; transition: width 0.8s ease-out; display: flex; align-items: center; justify-content: center; color: #5a3e3e; font-size: 0.75rem; font-weight: bold; }
+        .label-box { display: flex; justify-content: space-between; margin-top: 8px; font-size: 0.75rem; font-weight: 600; }
+
+        /* RSVP BLOCK */
+        .rsvp-form-block { text-align: left; margin-top: 15px; }
+        .rsvp-form-block label { display: block; font-size: 0.75rem; font-weight: 600; text-transform: uppercase; margin-bottom: 6px; margin-top: 14px; letter-spacing: 0.5px; }
+        .rsvp-form-block input, .rsvp-form-block select { width: 100%; box-sizing: border-box; padding: 12px; border: 1px solid var(--boho-tan); border-radius: 12px; font-family: 'Montserrat', sans-serif; font-size: 0.9rem; background-color: #fff; color: var(--text-brown); }
+        .rsvp-submit-btn { width: 100%; margin-top: 25px; text-align: center; }
+        
+        #customTimeInput { display: none; margin-top: 10px; border-color: #c7baaa; background-color: #fffaf5; }
+
+        /* Balloons bounds */
+        #balloon-container { position: fixed; top: 0; left: 0; width: 100vw; height: 100vh; pointer-events: none; z-index: 999; overflow: hidden; }
+        .floating-balloon { position: absolute; bottom: -100px; width: 40px; height: 50px; border-radius: 50% 50% 45% 45%; animation: floatUp 4s forwards ease-in; opacity: 0.9; }
+        .floating-balloon::after { content: ""; position: absolute; bottom: -8px; left: 18px; width: 2px; height: 10px; background: rgba(0,0,0,0.15); }
+        @keyframes floatUp { 0% { bottom: -100px; transform: scale(0.5); opacity: 1; } 100% { bottom: 120vh; transform: scale(1.2); opacity: 0; } }
+
+        /* Dialog overlays */
+        .modal { display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(93,79,67,0.4); backdrop-filter: blur(4px); justify-content: center; align-items: center; z-index: 1000; }
+        .modal-content { background: #fcfbfa; padding: 35px 25px; border-radius: 24px; width: 85%; max-width: 350px; text-align: center; border: 1px solid var(--boho-tan); }
+        .modal-content input { width: 100%; box-sizing: border-box; padding: 14px; margin: 15px 0 20px 0; border: 1px solid var(--boho-tan); border-radius: 12px; font-size: 1rem; }
+    </style>
+</head>
+<body>
+
+    <!-- STAGE 1: THE REVEAL HERO INTRO LAYER -->
+    <div class="intro-stage">
+        <div class="intro-branch"></div>
+        <div class="intro-honeycomb"></div>
+
+        <!-- Sliding Envelope Architecture -->
+        <div class="envelope-wrapper">
+            <div class="envelope-pocket"></div>
+            
+            <!-- Internal Invitation Card -->
+            <div class="invitation-card">
+                <div class="curved-text">Little CUB is on the way</div>
+                <div class="tagline">and we can BEARly wait!<br>join us for a</div>
+                <div class="script-title">Gender<br>Reveal</div>
+                <div class="hosted-by">Hosted by</div>
+                <div class="names">Pavan & Shamili</div>
+                
+                <!-- INTEGRATED SCROLL-REACTIVE PEEK-A-BOO BEAR -->
+                <div class="arch-container">
+                    <div class="bear-container">
+                        <div class="bear-ear left"><div class="bear-ear-inner"></div></div>
+                        <div class="bear-ear right"><div class="bear-ear-inner"></div></div>
+                        <div class="bear-head">
+                            <div class="bear-eye left"></div>
+                            <div class="bear-eye right"></div>
+                            <div class="bear-snout"><div class="bear-nose"></div></div>
+                        </div>
+                        <div class="bear-paw left" id="leftPaw"></div>
+                        <div class="bear-paw right" id="rightPaw"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="garden-border"></div>
+    </div>
+
+
+    <!-- STAGE 2: CARDS CONTAINMENT FLOW -->
+    <div class="main-content-stream">
+
+        <!-- TARGET EVENT CLOCK -->
+        <div class="countdown-container">
+            <div class="countdown-box"><div class="countdown-num" id="days">00</div><div class="countdown-label">Days</div></div>
+            <div class="countdown-box"><div class="countdown-num" id="hours">00</div><div class="countdown-label">Hrs</div></div>
+            <div class="countdown-box"><div class="countdown-num" id="minutes">00</div><div class="countdown-label">Min</div></div>
+            <div class="countdown-box"><div class="countdown-num" id="seconds">00</div><div class="countdown-label">Sec</div></div>
+        </div>
+
+        <div class="main-container">
+            
+            <!-- CARD 1: CELEBRATION LOGISTICS -->
+            <div class="premium-card" id="details-card">
+                <h3 style="font-family: 'Playfair Display', serif; font-size: 1.5rem;">Celebration Details 📅</h3>
+                <p style="line-height: 1.6rem; font-size: 0.95rem;">
+                    <strong>Saturday, June 27th, 2026</strong><br>
+                    Festivities begin at <strong>4:30 PM</strong><br>
+                </p>
+                <p style="line-height: 1.5rem; font-size: 0.95rem; margin-bottom: 25px;">
+                    <strong>Location:</strong><br>
+                    51043 Green Meadows Drive,<br>
+                    Macomb, Michigan
+                </p>
+                <a class="btn" href="https://maps.google.com/?q=51043+Green+Meadows+Drive,+Macomb,+Michigan" target="_blank">🗺️ Open Map Location</a>
+            </div>
+
+            <!-- CARD 2: PREVIEW PREGNANCY PICTURES -->
+            <div class="premium-card" id="gallery-card">
+                <h3 style="font-family: 'Playfair Display', serif; font-size: 1.5rem;">Sneak Peek 👶</h3>
+                <div class="photo-gallery">
+                    <div class="photo-frame">
+                        <img src="./1.jpg" onerror="this.src='1.JPG'; this.onerror=function(){this.src='1.jpeg'};" alt="Preview 1">
+                        <div class="photo-caption">Our Journey ✨</div>
+                    </div>
+                    <div class="photo-frame">
+                        <img src="./2.jpg" onerror="this.src='2.JPG'; this.onerror=function(){this.src='2.jpeg'};" alt="Preview 2">
+                        <div class="photo-caption">First Hello 👋</div>
+                    </div>
+                    <div class="photo-frame">
+                        <img src="./3.jpg" onerror="this.src='3.JPG'; this.onerror=function(){this.src='3.jpeg'};" alt="Preview 3">
+                        <div class="photo-caption">Sweet Moments ❤️</div>
+                    </div>
+                    <div class="photo-frame">
+                        <img src="./4.jpg" onerror="this.src='4.JPG'; this.onerror=function(){this.src='4.jpeg'};" alt="Preview 4">
+                        <div class="photo-caption">Growing Love 🌱</div>
+                    </div>
+                    <div class="photo-frame">
+                        <img src="./5.jpg" onerror="this.src='5.JPG'; this.onerror=function(){this.src='5.jpeg'};" alt="Preview 5">
+                        <div class="photo-caption">Can't Wait To Meet You 🍼</div>
+                    </div>
+                    <div class="photo-frame">
+                        <img src="./6.jpg" onerror="this.src='6.JPG'; this.onerror=function(){this.src='6.jpeg'};" alt="Preview 6">
+                        <div class="photo-caption">Little Steps 👣</div>
+                    </div>
+                    <div class="photo-frame">
+                        <img src="./7.jpg" onerror="this.src='7.JPG'; this.onerror=function(){this.src='7.jpeg'};" alt="Preview 7">
+                        <div class="photo-caption">Pure Joy Sunshine ☀️</div>
+                    </div>
+                    <div class="photo-frame">
+                        <img src="./8.jpg" onerror="this.src='8.JPG'; this.onerror=function(){this.src='8.jpeg'};" alt="Preview 8">
+                        <div class="photo-caption">Counting Down Days 🗓️</div>
+                    </div>
+                    <div class="photo-frame">
+                        <img src="./9.jpg" onerror="this.src='9.JPG'; this.onerror=function(){this.src='9.jpeg'};" alt="Preview 9">
+                        <div class="photo-caption">Blessed Hearts 🙏</div>
+                    </div>
+                    <div class="photo-frame">
+                        <img src="./10.jpg" onerror="this.src='10.JPG'; this.onerror=function(){this.src='10.jpeg'};" alt="Preview 10">
+                        <div class="photo-caption">Love At First Sight 💖</div>
+                    </div>
+                </div>
+                <p style="font-size: 0.75rem; color: #8a7a6e; margin-top: 8px; margin-bottom: 0;">Swipe left to see all photos ➔</p>
+            </div>
+
+            <!-- CARD 3: SCHEDULE & CLOTHING SELECTION -->
+            <div class="premium-card" id="experience-card">
+                <div class="bold-italic-cub">A Little CUB is on the way</div>
+
+                <div class="dress-code-box">
+                    <span class="dress-code-sub">Attire Preference</span>
+                    <h4 class="dress-code-title">Dress Code</h4>
+                    <p class="dress-code-text">
+                        Dress to impress in your absolute favorite <strong>Western Attire</strong>! Wear your favorite shades of <strong>nudes or brown</strong>. Bring your own personal style, flair, and flavor as we celebrate this beautiful day together. ✨
+                    </p>
+                </div>
+
+                <div style="margin-top: 35px;">
+                    <h3 style="font-family: 'Playfair Display', serif; font-size: 1.6rem; letter-spacing: -0.5px; margin-bottom: 5px;">What to Expect</h3>
+                    <div class="timeline">
+                        <div class="timeline-item"><strong>4:30 PM</strong> – Welcome & Fun Games 🎲</div>
+                        <div class="timeline-item"><strong>5:15 PM</strong> – Delicious Snacks 🥪</div>
+                        <div class="timeline-item"><strong>6:00 PM</strong> – The Grand Reveal! 🎈</div>
+                        <div class="timeline-item"><strong>6:30 PM</strong> – Group Photos 📸</div>
+                        <div class="timeline-item"><strong>7:00 PM</strong> – Celebration Dinner 🍽️</div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- CARD 4: POOL VOTING PREDICTIONS -->
+            <div class="premium-card" id="voting-card">
+                <h3 style="font-family: 'Playfair Display', serif; font-size: 1.5rem;">Cast Your Vote! 🤔</h3>
+                <p style="font-size: 0.9rem; color: #7a6a5e;">Are you Team Boy or Team Girl? Drop your prediction inside our live tracking pool below!</p>
+                
+                <div id="voting-interface">
+                    <div class="vote-box">
+                        <button class="vote-btn btn-boy" onclick="openVoteModal('Boy')">
+                            <span class="vote-icon">🧸</span>Team Boy
+                        </button>
+                        <button class="vote-btn btn-girl" onclick="openVoteModal('Girl')">
+                            <span class="vote-icon">🍯</span>Team Girl
+                        </button>
+                    </div>
+                </div>
+                <p id="voted-msg" style="display:none; font-weight:600; margin-top:20px; color: #4a6b53; font-size: 0.95rem;">🎉 Guess logged! Watch your screen fly! 🎈</p>
+
+                <div class="vote-metric-container">
+                    <div class="metric-title">Live Predictions Share</div>
+                    <div class="progress-bar-wrapper">
+                        <div class="bar-boy" id="boyBar" style="width: 50%;">50%</div>
+                        <div class="bar-girl" id="girlBar" style="width: 50%;">50%</div>
+                    </div>
+                    <div class="label-box">
+                        <span style="color: #4c6261;">🧸 Team Bear</span>
+                        <span style="color: #6e4646;">Team Honey 🍯</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- CARD 5: RESERVATION LOG BLOCK -->
+            <div class="premium-card" id="rsvp-card">
+                <h3 style="font-family: 'Playfair Display', serif; font-size: 1.5rem; margin-bottom: 5px;">Kindly RSVP 📨</h3>
+                <p style="font-size: 0.85rem; color: #8a7a6e; margin: 0 0 20px 0;">Please respond before June 17th to help us prepare.</p>
+                
+                <div id="rsvp-form-container" class="rsvp-form-block">
+                    <label for="rsvpName">Your Full Name</label>
+                    <input type="text" id="rsvpName" placeholder="First and Last name">
+
+                    <label for="rsvpAttendance">Will you be attending?</label>
+                    <select id="rsvpAttendance" onchange="toggleRsvpFields()">
+                        <option value="Yes">Joyfully Accept 🧸</option>
+                        <option value="No">Regretfully Decline</option>
+                    </select>
+
+                    <div id="rsvp-conditional-fields">
+                        <label for="rsvpCount">Total Number of Guests</label>
+                        <select id="rsvpCount">
+                            <option value="1">1 Person</option>
+                            <option value="2">2 People</option>
+                            <option value="3">3 People</option>
+                            <option value="4">4+ People</option>
+                        </select>
+
+                        <label for="rsvpTime">Estimated Arrival Time</label>
+                        <select id="rsvpTime" onchange="checkCustomTimeSelection()">
+                            <option value="4:30 PM">4:30 PM (Right on time!)</option>
+                            <option value="4:45 PM">4:45 PM</option>
+                            <option value="5:00 PM">5:00 PM</option>
+                            <option value="After 5:00 PM">After 5:00 PM</option>
+                            <option value="CUSTOM">Custom Time... 📝</option>
+                        </select>
+                        <input type="text" id="customTimeInput" placeholder="e.g., around 5:30 PM">
+                    </div>
+
+                    <div class="rsvp-submit-btn">
+                        <button class="btn" id="rsvpSubmitBtn" onclick="submitRSVP()">Submit RSVP Reply</button>
+                    </div>
+                </div>
+                <p id="rsvp-success-msg" style="display:none; color: #4a6b53; font-weight:600; text-align:center; margin: 15px 0 0 0;">🎉 RSVP successfully recorded! Thank you!</p>
+            </div>
+
+        </div>
+    </div>
+
+    <!-- BACKGROUND POPPER EFFECT BOX -->
+    <div id="balloon-container"></div>
+
+    <!-- MODAL POPUP DIALOG -->
+    <div class="modal" id="voteModal">
+        <div class="modal-content">
+            <h3 id="modalTitle" style="font-family: 'Playfair Display', serif; margin:0;">Enter Your Name</h3>
+            <input type="text" id="guestName" placeholder="First and Last Name">
+            <button class="btn" id="confirmVoteBtn" onclick="submitVote()">Confirm My Vote 🧸</button>
+            <br>
+            <button class="btn btn-secondary" onclick="closeVoteModal()">← Change Mind</button>
+        </div>
+    </div>
+
+    <script>
+        // Paste your new deployed Google Script Web App URL below
+        const GOOGLE_SCRIPT_URL = "https://script.google.com/macros/s/AKfycby489lrP6wvQ8Ntq0eNyW1zLqLgxD6kSa6EfHs_QuIgRSzG6mMDloMRCoyyUeEKUUoT6g/exec";
+        let selectedGuess = "";
+
+        const leftPaw = document.getElementById('leftPaw');
+        const rightPaw = document.getElementById('rightPaw');
+
+        window.addEventListener('DOMContentLoaded', () => {
+            setTimeout(() => {
+                releaseBalloons('#b3c7c6'); 
+                releaseBalloons('#dfb6b6');
+            }, 2500);
+        });
+
+        window.addEventListener('scroll', () => {
+            let scrollTop = window.scrollY;
+            let progress = Math.min(scrollTop / 200, 1); 
+            let translationY = progress * 65; 
+            let leftTranslationX = progress * -44; 
+            let rightTranslationX = progress * 44; 
+            
+            if(leftPaw && rightPaw) {
+                leftPaw.style.transform = `translate(${leftTranslationX}px, ${translationY}px)`;
+                rightPaw.style.transform = `translate(${rightTranslationX}px, ${translationY}px)`;
+            }
+        });
+
+        const targetDate = new Date("June 27, 2026 16:30:00").getTime();
+        const countdownInterval = setInterval(function() {
+            const now = new Date().getTime();
+            const difference = targetDate - now;
+            
+            if (difference <= 0) {
+                clearInterval(countdownInterval);
+                document.getElementById("days").innerText = "00";
+                document.getElementById("hours").innerText = "00";
+                document.getElementById("minutes").innerText = "00";
+                document.getElementById("seconds").innerText = "00";
+                return;
+            }
+
+            const d = Math.floor(difference / (1000 * 60 * 60 * 24));
+            const h = Math.floor((difference % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+            const m = Math.floor((difference % (1000 * 60 * 60)) / (1000 * 60));
+            const s = Math.floor((difference % (1000 * 60)) / 1000);
+            
+            document.getElementById("days").innerText = d < 10 ? "0" + d : d;
+            document.getElementById("hours").innerText = h < 10 ? "0" + h : h;
+            document.getElementById("minutes").innerText = m < 10 ? "0" + m : m;
+            document.getElementById("seconds").innerText = s < 10 ? "0" + s : s;
+        }, 1000);
+
+        function updateGraphicBars(boyCount, girlCount) {
+            const total = boyCount + girlCount;
+            const boyPct = total > 0 ? Math.round((boyCount / total) * 100) : 50;
+            const girlPct = total > 0 ? 100 - boyPct : 50;
+
+            const bBar = document.getElementById('boyBar');
+            const gBar = document.getElementById('girlBar');
+
+            if(bBar && gBar) {
+                bBar.style.width = boyPct + "%";
+                bBar.innerText = boyPct + "%";
+                gBar.style.width = girlPct + "%";
+                gBar.innerText = girlPct + "%";
+            }
+        }
+
+        // Cleaned up placeholder value setup to guarantee a flat 50/50 starting split
+        let mockBoy = 0, mockGirl = 0;
+        updateGraphicBars(mockBoy, mockGirl);
+
+        function openVoteModal(guess) {
+            selectedGuess = guess;
+            document.getElementById('modalTitle').innerText = (guess === 'Boy' ? 'Team Boy' : 'Team Girl') + " Prediction!";
+            document.getElementById('voteModal').style.display = "flex";
+        }
+
+        function closeVoteModal() {
+            document.getElementById('voteModal').style.display = "none";
+            selectedGuess = ""; 
+        }
+
+        async function submitVote() {
+            const name = document.getElementById('guestName').value.trim();
+            if(!name) { alert("Please provide your name!"); return; }
+            
+            const confirmBtn = document.getElementById('confirmVoteBtn');
+            confirmBtn.disabled = true;
+            document.getElementById('voteModal').style.display = "none";
+            
+            if(selectedGuess === 'Boy') mockBoy++; else mockGirl++;
+            updateGraphicBars(mockBoy, mockGirl);
+
+            document.getElementById('voting-interface').style.display = "none";
+            document.getElementById('voted-msg').style.display = "block";
+            releaseBalloons(selectedGuess === 'Boy' ? '#b3c7c6' : '#dfb6b6');
+
+            try {
+                await fetch(GOOGLE_SCRIPT_URL, {
+                    method: "POST",
+                    mode: "no-cors",
+                    headers: { "Content-Type": "application/json" },
+                    body: JSON.stringify({ action: "vote", name: name, guess: selectedGuess })
+                });
+            } catch (err) {
+                console.error("Silent submission handled: ", err);
+            } finally {
+                confirmBtn.disabled = false;
+            }
+        }
+
+        function toggleRsvpFields() {
+            const attendance = document.getElementById('rsvpAttendance').value;
+            const condFields = document.getElementById('rsvp-conditional-fields');
+            condFields.style.display = (attendance === 'No') ? "none" : "block";
+        }
+        
+        function checkCustomTimeSelection() {
+            const selectValue = document.getElementById('rsvpTime').value;
+            const customInput = document.getElementById('customTimeInput');
+            customInput.style.display = (selectValue === 'CUSTOM') ? "block" : "none";
+        }
+
+        async function submitRSVP() {
+            const name = document.getElementById('rsvpName').value.trim();
+            const attendance = document.getElementById('rsvpAttendance').value;
+            const guestCount = document.getElementById('rsvpCount').value;
+            
+            let arrivalTime = document.getElementById('rsvpTime').value;
+            if (arrivalTime === 'CUSTOM') {
+                const customVal = document.getElementById('customTimeInput').value.trim();
+                arrivalTime = customVal ? customVal : "Custom/Not Specified";
+            }
+
+            if (!name) { alert("Please enter your name to complete RSVP."); return; }
+
+            const submitBtn = document.getElementById('rsvpSubmitBtn');
+            submitBtn.disabled = true;
+            submitBtn.innerText = "Sending...";
+
+            try {
+                await fetch(GOOGLE_SCRIPT_URL, {
+                    method: "POST",
+                    mode: "no-cors",
+                    headers: { "Content-Type": "application/json" },
+                    body: JSON.stringify({
+                        action: "rsvp",
+                        name: name,
+                        attendance: attendance,
+                        guests: attendance === 'Yes' ? guestCount : '0',
+                        arrival: attendance === 'Yes' ? arrivalTime : 'N/A'
+                    })
+                });
+                
+                document.getElementById('rsvp-form-container').style.display = "none";
+                document.getElementById('rsvp-success-msg').style.display = "block";
+            } catch (err) {
+                alert("RSVP Network Error. Please try again.");
+                submitBtn.disabled = false;
+                submitBtn.innerText = "Submit RSVP Reply";
+            }
+        }
+
+        function releaseBalloons(color) {
+            const container = document.getElementById('balloon-container');
+            for(let i = 0; i < 20; i++) {
+                setTimeout(() => {
+                    const balloon = document.createElement('div');
+                    balloon.classList.add('floating-balloon');
+                    balloon.style.backgroundColor = color;
+                    balloon.style.left = (Math.random() * 90 + 5) + "vw";
+                    balloon.style.animationDelay = (Math.random() * 1.2) + "s";
+                    container.appendChild(balloon);
+                    setTimeout(() => balloon.remove(), 4500);
+                }, i * 60);
+            }
+        }
+    </script>
+</body>
+</html>
